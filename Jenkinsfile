@@ -1,6 +1,5 @@
 pipeline {
     agent any
-    
     stages{
         
 stage('build') {
@@ -8,10 +7,9 @@ stage('build') {
                
                checkout scm
 
-
     }
             }
-        }
+        
 
         stage('deploy') {
             steps{
@@ -24,10 +22,6 @@ stage('build') {
     }
             }
         }
-
-
-
-
 
 
 
