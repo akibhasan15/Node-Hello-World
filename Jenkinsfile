@@ -3,7 +3,17 @@ pipeline {
     
     stages{
         
-        stage('pathaan') {
+stage('build') {
+            steps{
+               
+               checkout scm
+
+
+    }
+            }
+        }
+
+        stage('deploy') {
             steps{
                sshagent(credentials: ['illusion']) {
                sh 'ssh illusion@172.17.0.1 "ls -l"'
@@ -14,5 +24,12 @@ pipeline {
     }
             }
         }
+
+
+
+
+
+
+
     }
 }
