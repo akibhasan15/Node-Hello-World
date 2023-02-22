@@ -3,10 +3,10 @@ pipeline {
     stages{
         
 stage('build') {
-               
+               steps{
               docker.build("akib123/node-app1:v1.0")
                  }
-        
+                }
 
         stage('deploy') {
             steps{
