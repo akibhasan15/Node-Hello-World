@@ -6,7 +6,7 @@ stage('build') {
             steps{
                
                echo "hello"
-
+              docker.build("akib123/node-testapp1:latest")
     }
             }
         
