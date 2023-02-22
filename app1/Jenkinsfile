@@ -1,0 +1,14 @@
+pipeline {
+    agent any
+    stages{
+        
+stage('build') {
+               steps{
+                    git https://github.com/akibhasan15/Node-Hello-World
+                    sh ls -la
+}
+
+
+
+    }
+}
