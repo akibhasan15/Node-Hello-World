@@ -4,7 +4,8 @@ pipeline {
         
 stage('build') {
                steps{
-              docker.build("akib123/node-app1:v1.0")
+                echo "hello"
+             // docker.build("akib123/node-app1:v1.0")
                  }
                 }
 
