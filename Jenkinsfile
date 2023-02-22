@@ -4,7 +4,7 @@ pipeline {
         
 stage('build') {
                
-              docker.build("akib123/node-testapp1:latest")
+              docker.build("akib123/node-app1:v1.0")
                  }
         
 
