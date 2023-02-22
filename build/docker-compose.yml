@@ -1,0 +1,15 @@
+services:
+   node-app1:
+    build: .
+    image: akib123/node-app1:v1.0 #tagging the build image with node-app1
+    ports:
+      - "3000:3000"
+    container_name: node-app1
+
+ # node-app2:
+  #  build: .
+   # image: akib123/node-app2:v1.0 #tagging the build image with node-app2
+    #ports:
+     # - "3000:3000"
+    #container_name: node-app2
+
