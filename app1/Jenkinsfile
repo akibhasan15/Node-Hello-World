@@ -15,7 +15,7 @@ stage('test') {
                     
                    }
 }
-
+}
 stage('build&push') {
 
     steps{
@@ -25,7 +25,7 @@ stage('build&push') {
 }
 
     }
-} }
+} 
 
 
 
