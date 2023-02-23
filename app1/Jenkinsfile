@@ -5,7 +5,7 @@ pipeline {
 stage('build') {
                steps{
                  //   git https://github.com/akibhasan15/Node-Hello-World
-                    sh ls -la
+                    sh 'ls -la'
 }
 
 
