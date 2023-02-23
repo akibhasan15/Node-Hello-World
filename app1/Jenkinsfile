@@ -16,10 +16,10 @@ stage('test') {
                    }
 }
 }
-stage('build&push') {
+stage('build') {
 
     steps{
-           sh 'docker build -t akib123/rep -f ./app1/build/Dockerfile ./app1/src/'
+           sh 'docker build -t akib123/node-app1:v1.0 -f ./app1/build/Dockerfile ./app1/src/'
            
     }
 }
