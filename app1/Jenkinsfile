@@ -1,21 +1,31 @@
 pipeline {
     agent any
     stages{
-        
+        //Automatically it will checkout scm, so no worries
 stage('test') {
                steps{
                  //   git https://github.com/akibhasan15/Node-Hello-World
                    
                    nodejs(nodeJSInstallationName: 'nodejs'){
                     sh 'cd ./app1/src/ && npm install'
-                    //sh 'npm install'
+                    //Every time any shell command or anything executed, it throw me on parent directory
+                    // found in /var/jenkins_home/workspace/node-app1/
                     sh 'cd ./app1/src/ && ls -la'
                     //sh 'npm test'
                     
                    }
 }
 
+stage('build&push') {
 
+    steps{
+           sh 'docker build -t akib123/rep -f ./app1/build/Dockerfile ./app1/src/'
+           
+    }
+}
 
     }
 } }
+
+
+
