@@ -6,7 +6,7 @@ stage('test') {
                steps{
                  //   git https://github.com/akibhasan15/Node-Hello-World
                    
-                   nodejs(nodeJSInstalltionName: 'nodejs'){
+                   nodejs(nodeJSInstallationName: 'nodejs'){
                     sh 'npm install'
                     sh 'node ./app1/index.js'
                    }
