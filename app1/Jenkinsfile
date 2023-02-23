@@ -8,7 +8,8 @@ stage('test') {
                    
                    nodejs(nodeJSInstallationName: 'nodejs'){
                     sh 'cd ./app1/src/'
-                    sh 'npm install'
+                    //sh 'npm install'
+                    sh 'ls -la'
                     //sh 'npm test'
                     sh 'cd ../../'
                    }
