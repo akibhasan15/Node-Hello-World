@@ -7,11 +7,11 @@ stage('test') {
                  //   git https://github.com/akibhasan15/Node-Hello-World
                    
                    nodejs(nodeJSInstallationName: 'nodejs'){
-                    sh 'cd ./app1/src/'
+                    sh 'cd ./app1/src/ && npm install'
                     //sh 'npm install'
-                    sh 'ls -la'
+                    sh 'cd ./app1/src/ && ls -la'
                     //sh 'npm test'
-                    sh 'cd ../../'
+                    
                    }
 }
 
