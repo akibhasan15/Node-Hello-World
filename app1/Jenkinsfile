@@ -32,7 +32,7 @@ stage('Build') {
                sshagent(credentials: ['illusion']) {
                //sh 'ls -l'
                sh 'scp ./app1/deploy/app1.yaml   illusion@172.17.0.1:Desktop/ '
-               sh 'ssh illusion@172.17.0.1 "minikube kubectl -- apply /Desktop/app1.yaml"' 
+               sh 'ssh illusion@172.17.0.1 "minikube kubectl -- apply -f Desktop/app1.yaml"' 
 
     }
             }
