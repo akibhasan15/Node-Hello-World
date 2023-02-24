@@ -27,7 +27,7 @@ stage('Build') {
            
             steps{
                //kubernetes CLI needed 
-                    withKubeConfig([credentialsId:'illusion',serverUrl:'192.168.58.2']) {
+                    withKubeConfig([credentialsId:'illusion',serverUrl:'192.168.58.2:8443']) {
                         sh 'minikube kubectl -- get pods'
                     }
 
