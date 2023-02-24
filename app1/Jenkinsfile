@@ -30,8 +30,8 @@ stage('Build') {
                 
                
                sshagent(credentials: ['illusion']) {
-               //sh 'ssh illusion@172.17.0.1 "ls -l"'
-               sh 'scp /app1/deploy/app1.yaml   illusion@172.17.0.1:/home/illusion/Desktop/ '
+               sh 'ls -l'
+               sh 'scp ./app1/deploy/app1.yaml   illusion@172.17.0.1:/home/illusion/Desktop/ '
                //sh 'ssh illusion@172.17.0.1 "minikube kubectl -- get pods"' 
 
     }
