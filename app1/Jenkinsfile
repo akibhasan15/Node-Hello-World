@@ -27,7 +27,7 @@ stage('Build') {
            
             steps{
                //kubernetes CLI needed 
-                    withKubeConfig([credentialsId:'deploy',serverUrl:'192.168.58.2:8443']) {
+                    withKubeConfig([credentialsId:'deploy',serverUrl:'172.17.0.1']) {
                         sh 'kubectl apply -f ./app1/deploy/app1.yaml'
                     }
 
