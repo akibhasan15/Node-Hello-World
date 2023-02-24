@@ -2,7 +2,7 @@ pipeline {
     agent any
     stages{
         //Automatically it will checkout scm, so no worries
-/*stage('Test') {
+stage('Test') {
                steps{
                  //   git https://github.com/akibhasan15/Node-Hello-World
                    
@@ -22,16 +22,15 @@ stage('Build') {
            sh 'docker build -t akib123/node-app1:v1.0 -f ./app1/build/Dockerfile ./app1/src/'
            
     }
-} */
+} 
  stage('Deployment') {
            
             steps{
-               //kubernetes CLI needed 
-                
-               
+                 
                sshagent(credentials: ['illusion']) {
-               //sh 'ls -l'
+               
                sh 'scp ./app1/deploy/app1.yaml   illusion@172.17.0.1:Desktop/ '
+               
                sh 'ssh illusion@172.17.0.1 "minikube kubectl -- apply -f Desktop/app1.yaml"' 
 
     }
