@@ -2,7 +2,7 @@ pipeline {
     agent any
     stages{
         //Automatically it will checkout scm, so no worries
-stage('test') {
+/*stage('Test') {
                steps{
                  //   git https://github.com/akibhasan15/Node-Hello-World
                    
@@ -15,15 +15,31 @@ stage('test') {
                     
                    }
 }
-}
-stage('build') {
+} 
+stage('Build') {
 
     steps{
            sh 'docker build -t akib123/node-app1:v1.0 -f ./app1/build/Dockerfile ./app1/src/'
            
     }
-}
+} */
+ stage('Deployment') {
+           
+            steps{
+               //kubernetes CLI needed 
+                    withKubeConfig([credentialsId:'illusion',serverUrl:'192.168.58.2']) {
+                        sh 'minikube kubectl -- get pods'
+                    }
 
+               
+               
+               /*sshagent(credentials: ['illusion']) {
+               //sh 'ssh illusion@172.17.0.1 "ls -l"'
+               //sh 'ssh illusion@172.17.0.1 "minikube start -p node"'
+               //sh 'ssh illusion@172.17.0.1 "minikube kubectl -- get pods"' */
+
+    }
+            }
     }
 } 
 
