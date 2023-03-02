@@ -28,8 +28,11 @@ stage('Build') {
             steps{
                  
                sshagent(credentials: ['illusion']) {
+               withCredentials([string(credentialsId: 'USER@KubeServer', variable: 'userAtIP')]) {
+    // some block
+                sh 'scp ./app1/deploy/app1.yaml   ${userAtIP}:Desktop/ '
+}
                
-               sh 'scp ./app1/deploy/app1.yaml   illusion@172.17.0.1:Desktop/ '
                
                sh 'ssh illusion@172.17.0.1 "minikube kubectl -- apply -f Desktop/app1.yaml"' 
 
