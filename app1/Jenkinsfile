@@ -31,10 +31,11 @@ stage('Build') {
                withCredentials([string(credentialsId: 'USER@KubeServer', variable: 'userAtIP')]) {
     // some block
                 sh 'scp ./app1/deploy/app1.yaml   ${userAtIP}:Desktop/ '
+                sh 'ssh ${userAtIP} "minikube kubectl -- apply -f Desktop/app1.yaml"'
 }
                
                
-               sh 'ssh illusion@172.17.0.1 "minikube kubectl -- apply -f Desktop/app1.yaml"' 
+                
 
     }
             }
