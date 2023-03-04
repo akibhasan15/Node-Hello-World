@@ -1,27 +1,45 @@
 pipeline {
     agent any
     stages{
-        
-stage('build') {
+        //Automatically it will checkout scm
+stage('Test') {
                steps{
-                echo "hello"
-             alu=docker.build("akib123/node-app1:v1.0")
-                 }
-                }
+                
+                   
+                   nodejs(nodeJSInstallationName: 'nodejs'){
+                    sh 'cd ./app2/src/ && npm install'
+                    //Every time any shell command or anything executed, it throw me on parent directory
+                    // found in /var/jenkins_home/workspace/node-app1/
+                    //sh 'npm test'
+                    
+                   }
+}
+} 
+stage('Build Image and Push') {
 
-        stage('deploy') {
+    steps{
+           sh 'docker build -t akib123/node-app2:v1.0 -f ./app2/build/Dockerfile ./app2/src/'
+           
+    }
+} 
+ stage('Deployment') {
+           
             steps{
+                 
                sshagent(credentials: ['illusion']) {
-               sh 'ssh illusion@172.17.0.1 "ls -l"'
-               //sh 'ssh illusion@172.17.0.1 "minikube start -p node"'
-               sh 'ssh illusion@172.17.0.1 "minikube kubectl -- get pods "'
-
+               withCredentials([string(credentialsId: 'USER@KubeServer', variable: 'userAtIP')]) {
+    // some block
+                sh 'scp ./app2/deploy/app2.yaml   ${userAtIP}:Desktop/ '
+                sh 'ssh ${userAtIP} "minikube kubectl -- apply -f Desktop/app2.yaml"'
+}
+               
+               
+                
 
     }
             }
-        }
-
-
-
     }
+} 
+
 }
+
